@@ -1,6 +1,13 @@
 #include <iostream>
 #include "functions.h"
 #include "Account.h"
+
+void tryToChangeTransaction(Transaction t){
+    t.doubleAmount();
+}
+void changeTransaction(Transaction& t){
+    t.doubleAmount();
+}
 void test1(){
     Account a1;
     a1.Deposit(90);
@@ -18,6 +25,13 @@ void test1(){
     for(const auto &s : a1.Report()){
         std::cout<<s<<std::endl;
     }
+
+    Transaction deposit(50, "Deposit");
+    std::cout<<"Original : "<<deposit.Report()<<std::endl;
+    tryToChangeTransaction(deposit);
+    std::cout<<"After pass by value : "<<deposit.Report()<<std::endl;
+    changeTransaction(deposit);
+    std::cout<<"After pass by reference : "<<deposit.Report()<<std::endl;
 }
 
 int main(int argc, char* argv[]) {

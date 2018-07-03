@@ -21,7 +21,7 @@ public:
     std::vector<std::string> Report() const;
     bool Deposit(int amt) const;
     bool withdraw(int amt);
-    int getBalance(){return balance;};//inline function except for implementing in .cppl
+    int getBalance(){return balance;}//inline function except for implementing in .cpp
 };
 
 
