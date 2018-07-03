@@ -46,5 +46,8 @@ int main(int argc, char* argv[]) {
 
     std::cout<<std::endl;
     test1();
+
+    auto temp = static_cast<int>(4.9);
+    std::cout<<temp<<std::endl;
     return 0;
 }
