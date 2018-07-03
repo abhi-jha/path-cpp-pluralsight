@@ -69,5 +69,16 @@ int main(int argc, char* argv[]) {
     std::cout<<CUBE(1+3)<<std::endl;//MACRO IS A TEXTUAL SUBSTITUTION BEFORE COMPILATION
 
     std::cout<<SQR(1+3)<<std::endl;
+
+//    auto x;
+//    x.push_back("hello");
+//    x.push_back("a");
+//    for(const auto &s : x)
+//        std::cout<<s<<std::endl;
+
+    typedef std::vector<std::string> VectorOfString;
+    typedef std::vector<double> VectorOfDouble;
+
+
     return 0;
 }
