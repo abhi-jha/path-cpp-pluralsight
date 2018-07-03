@@ -2,6 +2,15 @@
 #include "functions.h"
 #include "Account.h"
 
+#include "Person.h"
+#include "structs.h"
+#include "Tweeter.h"
+#include "Status.h"
+
+using std::cout;
+using std::cin;
+using std::endl;
+
 #define SQR(x) ((x)*(x))
 #define CUBE(x)(x*x*x)
 
@@ -37,6 +46,90 @@ void test1(){
     std::cout<<"After pass by reference : "<<deposit.Report()<<std::endl;
 }
 
+void test2(){
+    //    std::cout<<"Type your name : "<<std::endl;
+//    std::string name;
+//    std::cin>>name;
+//    std::cout<<"Hello, "<<name<<std::endl;
+//
+//    int i1 = 1;
+//
+//    int i2;
+//    i2 = 2;
+//
+//    int i3(3);
+//
+//    int i4{4};
+//
+//
+//    double d1 = 2.2;
+//    double d2 = i1;
+//
+//    int i5 = d1;
+//
+//    int c1 = 'a';
+//
+//    bool flag = false;
+//
+//    flag = i1;
+//
+//    flag = d1;
+//
+//    std::cout<<i1<<std::endl;
+//    std::cout<<i2<<std::endl;
+//    std::cout<<i3<<std::endl;
+//    std::cout<<i4<<std::endl;
+//    std::cout<<i5<<std::endl;
+//
+//    std::cout<<d1<<std::endl;
+//    std::cout<<d2<<std::endl;
+//
+//    std::cout<<c1<<std::endl;
+//    std::cout<<flag<<std::endl;
+//
+//    auto a1 = 1;
+//    auto a2 = 2.2;
+//    auto a3 = 'c';
+//    auto a4 = "s";
+//    auto a5  = true;
+//    auto a6 = 3L;
+//    auto a7 = 1'000'000'000;
+//    auto a8 = 0xFF;
+//    auto a9  = 0b111;
+//    auto a10 = 0o12;
+//    std::cout<<a10;
+//    a1 = a2;
+//    a3 = a4;
+//    a4 = a3;
+
+    Person p1("Kate", "Gregory", 123);
+    {
+        Person p2;
+        Tweeter t1("Someone", "Else", 456, "@whoever");
+        std::cout<<" name : "<< t1.getName()<<std::endl;
+
+    }
+    cout<<"after innermost block"<<endl;
+
+    temp *t;
+    temp x(2,3);
+    t = &x;
+    t->add();
+    t->printVals();
+
+    (*t).add();
+    (*t).printVals();
+
+
+    Status s = Pending;
+
+    FileError fe = FileError ::notfound;
+
+    fe = FileError ::ok;
+
+    NetworkError  ne = NetworkError ::disconnected;
+    ne = NetworkError ::ok;
+}
 int main(int argc, char* argv[]) {
     for(int  i = 1 ; i < argc; i++)
         std::cout<<argv[i]<<"\t";
@@ -80,5 +173,6 @@ int main(int argc, char* argv[]) {
     typedef std::vector<double> VectorOfDouble;
 
 
+    test2();
     return 0;
 }
