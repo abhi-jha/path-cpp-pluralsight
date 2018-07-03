@@ -4,7 +4,7 @@
 void test1(){
     Account a1;
     a1.Deposit(90);
-    std::cout<<"After depositing $90 "<<std::endl;
+    std::cout<<"After depositing $90 balance is "<<a1.getBalance()<<std::endl;
     for(const auto &s :a1.Report()){
         std::cout<<s<<std::endl;
     }

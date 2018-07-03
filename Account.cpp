@@ -40,3 +40,7 @@ bool Account::withdraw(int amt) {
     }
     return false;
 }
+//
+//int Account::getBalance() {
+//    return balance;
+//}
