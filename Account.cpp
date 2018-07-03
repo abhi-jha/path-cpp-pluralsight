@@ -6,7 +6,7 @@
 
 Account::Account():balance(0),limit(100) {}
 
-bool Account::Deposit(int amt) {
+bool Account::Deposit(int amt) const {
     if(amt >= 0){
         balance += amt;
         log.push_back(Transaction(amt, "Deposit"));
@@ -17,7 +17,7 @@ bool Account::Deposit(int amt) {
     return false;
 }
 
-std::vector<std::string> Account::Report() {
+std::vector<std::string> Account::Report() const {
     std::vector<std::string> report;
     report.push_back("Balance is "+std::to_string(balance));
     report.push_back("Transaction : ");
