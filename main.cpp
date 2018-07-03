@@ -2,6 +2,9 @@
 #include "functions.h"
 #include "Account.h"
 
+#define SQR(x) ((x)*(x))
+#define CUBE(x)(x*x*x)
+
 void tryToChangeTransaction(Transaction t){
     t.doubleAmount();
 }
@@ -56,12 +59,15 @@ int main(int argc, char* argv[]) {
     double m = add(3,2);
 
     std::cout<<m<<"\n";
-    std::cout<<add(add(3.0,4.0), add(1.2, 4.));//Change the few values to int and check errors
+    std::cout<<add(add(3.0,4.0), add(1.2, 4.))<<std::endl;//Change the few values to int and check errors
 
-    std::cout<<std::endl;
     test1();
 
     auto temp = static_cast<int>(4.9);
     std::cout<<temp<<std::endl;
+
+    std::cout<<CUBE(1+3)<<std::endl;//MACRO IS A TEXTUAL SUBSTITUTION BEFORE COMPILATION
+
+    std::cout<<SQR(1+3)<<std::endl;
     return 0;
 }
