@@ -1,0 +1,25 @@
+//
+// Created by user on 3/7/18.
+//
+
+#ifndef PATH_CPP_PLURALSIGHT_ACCOUNT_H
+#define PATH_CPP_PLURALSIGHT_ACCOUNT_H
+
+
+#include <vector>
+#include <string>
+#include "Transaction.h"
+class Account {
+
+private:
+    int balance;
+    std::vector<Transaction> log;
+public:
+    Account();
+    std::vector<std::string> Report();
+    bool Deposit(int amt);
+    bool withdraw(int amt);
+};
+
+
+#endif //PATH_CPP_PLURALSIGHT_ACCOUNT_H
