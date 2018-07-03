@@ -11,6 +11,9 @@ using std::cout;
 using std::cin;
 using std::endl;
 
+//USE const reference(int cosnt &x ) as pass by value for efficiency
+//Don't return references which go out of scope causing dangling pointer
+
 #define SQR(x) ((x)*(x))
 #define CUBE(x)(x*x*x)
 
@@ -44,6 +47,27 @@ void test1(){
     std::cout<<"After pass by value : "<<deposit.Report()<<std::endl;
     changeTransaction(deposit);
     std::cout<<"After pass by reference : "<<deposit.Report()<<std::endl;
+}
+void prime(){
+    int x;
+    cout<<"Enter a number"<<endl;
+    cin>>x;
+
+    bool prime = true;
+    for(int i = 2; i <= x/i; i++){
+        int factor = x /i;
+        if(factor*i == x){
+            cout<<"Factor found : "<<i<<" * "<<factor<<endl;
+            prime = false;
+            break;
+        }
+    }
+
+    cout<<x<< " is ";
+    if(prime)
+        cout<<"prime"<<endl;
+    else
+        cout<<"not prime"<<endl;
 }
 
 void test2(){
@@ -130,6 +154,15 @@ void test2(){
     NetworkError  ne = NetworkError ::disconnected;
     ne = NetworkError ::ok;
 }
+
+void test3(){
+    int x = 100;
+
+    while( 0 <---------------------- x )//Power of the wand
+    {
+        printf("%d ", x);
+    }
+}
 int main(int argc, char* argv[]) {
     for(int  i = 1 ; i < argc; i++)
         std::cout<<argv[i]<<"\t";
@@ -174,5 +207,9 @@ int main(int argc, char* argv[]) {
 
 
     test2();
+
+    prime();
+
+    test3();
     return 0;
 }
