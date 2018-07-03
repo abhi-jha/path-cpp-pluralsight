@@ -4,7 +4,7 @@
 
 #ifndef PATH_CPP_PLURAL_FUNCTIONS_H
 #define PATH_CPP_PLURAL_FUNCTIONS_H
-
+#pragma once
 
 class functions {
 

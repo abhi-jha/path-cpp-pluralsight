@@ -5,6 +5,7 @@
 #ifndef PATH_CPP_PLURALSIGHT_ACCOUNT_H
 #define PATH_CPP_PLURALSIGHT_ACCOUNT_H
 
+//#pragma once
 
 #include <vector>
 #include <string>

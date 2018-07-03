@@ -20,7 +20,10 @@ void test1(){
     }
 }
 
-int main() {
+int main(int argc, char* argv[]) {
+    for(int  i = 1 ; i < argc; i++)
+        std::cout<<argv[i]<<"\t";
+
     std::cout << "\nHello, World!\n" << std::endl;
     std::cout<< 12+2<<"\n";
 

@@ -5,7 +5,7 @@
 #ifndef PATH_CPP_PLURALSIGHT_TRANSACTION_H
 #define PATH_CPP_PLURALSIGHT_TRANSACTION_H
 
-
+#pragma once
 #include <string>
 
 
