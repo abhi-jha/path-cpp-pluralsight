@@ -9,6 +9,7 @@
 #include "ClassesAndObjects.h"
 #include "Templates.h"
 #include "Accum.h"
+#include "Resource.h"
 using std::cout;
 using std::cin;
 using std::endl;
@@ -165,67 +166,123 @@ void test3(){
         printf("%d ", x);
     }
 }
+
+void referencesAndPointers(){
+    int a = 3;
+    cout<<"a is : "<<a<<endl;
+    int& rA = a;
+    cout<<"a is : "<<rA<<endl;
+
+    Person Kate("Kate", "Gregory", 234);
+    Person& rKate  = Kate;
+    rKate.setNumber(3456);
+    cout<<"rKate : "<<rKate.getName()<<"  "<<rKate.getNumber()<<endl;
+
+    int* pA = &a;
+    *pA = 4;
+    cout<<"a is "<<a<<endl;
+    int b = 100;
+    pA = &b;
+    (*pA)++;
+    cout<<"a "<<a<<" , *pA "<<pA<<endl;
+
+    Person* pKate  = &Kate;
+    (*pKate).setNumber(42314);
+    pKate->setNumber(14543);
+    cout<<"Person name : "<< Kate.getName()<<"  "<<Kate.getNumber()<<endl;
+    cout<<"Person name : "<< pKate->getName()<<endl;
+
+    //Can't do as follows
+//    int &ref;
+//    ref = 3;
+//
+
+    //Segmentation fault, core dumped
+//    int *badPointer;
+//    *badPointer = 3;
+//    cout<<"BadPointer is : "<<*badPointer<<endl;
+
+
+    //Dereferencing null pointer
+//    int *badPointer = nullptr;
+//    *badPointer = 3;
+//    cout<<"BadPointer is : "<<*badPointer<<endl;
+
+}
+
+void testResource(){
+    Person Kate("Kate", "Gregory", 345);
+    Kate.addResource();
+    Kate.setFirstName("Abhi");
+    Kate.addResource();
+
+    Person k = Kate;
+}
+
 int main(int argc, char* argv[]) {
-    for(int  i = 1 ; i < argc; i++)
-        std::cout<<argv[i]<<"\t";
-
-    std::cout << "\nHello, World!\n" << std::endl;
-    std::cout<< 12+2<<"\n";
-
-    int i;
-    i = 9/2;
-
-    std::cout<<i<<"\n";
-    double  j ;
-
-    j = 9.0/2;
-    std::cout<<j<<"\n";
-
-    auto  k = 9/2;
-    std::cout<<k<<"\n";
-
-    double m = add(3,2);
-
-    std::cout<<m<<"\n";
-    std::cout<<add(add(3.0,4.0), add(1.2, 4.))<<std::endl;//Change the few values to int and check errors
-
-    test1();
-
-    auto temp = static_cast<int>(4.9);
-    std::cout<<temp<<std::endl;
-
-    std::cout<<CUBE(1+3)<<std::endl;//MACRO IS A TEXTUAL SUBSTITUTION BEFORE COMPILATION
-
-    std::cout<<SQR(1+3)<<std::endl;
-
+//    for(int  i = 1 ; i < argc; i++)
+//        std::cout<<argv[i]<<"\t";
+//
+//    std::cout << "\nHello, World!\n" << std::endl;
+//    std::cout<< 12+2<<"\n";
+//
+//    int i;
+//    i = 9/2;
+//
+//    std::cout<<i<<"\n";
+//    double  j ;
+//
+//    j = 9.0/2;
+//    std::cout<<j<<"\n";
+//
+//    auto  k = 9/2;
+//    std::cout<<k<<"\n";
+//
+//    double m = add(3,2);
+//
+//    std::cout<<m<<"\n";
+//    std::cout<<add(add(3.0,4.0), add(1.2, 4.))<<std::endl;//Change the few values to int and check errors
+//
+//    test1();
+//
+//    auto temp = static_cast<int>(4.9);
+//    std::cout<<temp<<std::endl;
+//
+//    std::cout<<CUBE(1+3)<<std::endl;//MACRO IS A TEXTUAL SUBSTITUTION BEFORE COMPILATION
+//
+//    std::cout<<SQR(1+3)<<std::endl;
+//
 //    auto x;
 //    x.push_back("hello");
 //    x.push_back("a");
 //    for(const auto &s : x)
 //        std::cout<<s<<std::endl;
-
-    typedef std::vector<std::string> VectorOfString;
-    typedef std::vector<double> VectorOfDouble;
-
-
-    test2();
-
-    prime();
-
-    test3();
-
-    classesAndObjects();
-
-    cout<<templated_max(33,44)<<endl;
-    int x = 97;
-    cout<<templated_max(x,0)<<endl;
-
-    std::string s1 = "abc";
-    std::string s2 = "xyz";
-    cout<<templated_max(s1,s2)<<endl;
-
-    cout<<templated_max<double>(33, 2.0)<<endl;
-
-    accum();
+//
+//    typedef std::vector<std::string> VectorOfString;
+//    typedef std::vector<double> VectorOfDouble;
+//
+//
+//    test2();
+//
+//    prime();
+//
+//    test3();
+//
+//    classesAndObjects();
+//
+//    cout<<templated_max(33,44)<<endl;
+//    int x = 97;
+//    cout<<templated_max(x,0)<<endl;
+//
+//    std::string s1 = "abc";
+//    std::string s2 = "xyz";
+//    cout<<templated_max(s1,s2)<<endl;
+//
+//    cout<<templated_max<double>(33, 2.0)<<endl;
+//
+//    accum();
+//    referencesAndPointers();
+//    testHeap();
+    testResource();
     return 0;
 }
