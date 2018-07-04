@@ -12,7 +12,7 @@ private:
     std::string firstname;
     std::string lastname;
     int arbitrarynumber;
-
+    friend bool operator<(int i, Person const& p);
 public:
     //Person()= default;
     Person();
@@ -25,5 +25,5 @@ public:
     bool operator<(int i) const;
 };
 
-bool operator<(int i, Person const& p);
+//bool operator<(int i, Person const& p);
 #endif //PATH_CPP_PLURALSIGHT_PERSON_H

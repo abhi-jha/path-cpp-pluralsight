@@ -32,5 +32,5 @@ bool Person::operator<(int i) const {
 }
 
 bool operator<(int i, Person const& p){
-    return i<p.getNumber();
+    return i<p.arbitrarynumber; //Now able to access private fields
 }
