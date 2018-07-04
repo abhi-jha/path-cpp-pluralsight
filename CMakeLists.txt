@@ -3,4 +3,4 @@ project(path_cpp_pluralsight)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(path_cpp_pluralsight main.cpp functions.cpp functions.h Account.cpp Account.h Transaction.cpp Transaction.h Tweeter.cpp Tweeter.h Person.cpp Person.h Status.cpp Status.h structs.cpp structs.h ClassesAndObjects.cpp ClassesAndObjects.h)
+add_executable(path_cpp_pluralsight main.cpp functions.cpp functions.h Account.cpp Account.h Transaction.cpp Transaction.h Tweeter.cpp Tweeter.h Person.cpp Person.h Status.cpp Status.h structs.cpp structs.h ClassesAndObjects.cpp ClassesAndObjects.h Templates.cpp Templates.h)

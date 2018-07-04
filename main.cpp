@@ -7,6 +7,7 @@
 #include "Tweeter.h"
 #include "Status.h"
 #include "ClassesAndObjects.h"
+#include "Templates.h"
 using std::cout;
 using std::cin;
 using std::endl;
@@ -214,5 +215,14 @@ int main(int argc, char* argv[]) {
 
     classesAndObjects();
 
+    cout<<templated_max(33,44)<<endl;
+    int x = 97;
+    cout<<templated_max(x,0)<<endl;
+
+    std::string s1 = "abc";
+    std::string s2 = "xyz";
+    cout<<templated_max(s1,s2)<<endl;
+
+    cout<<templated_max<double>(33, 2.0)<<endl;
     return 0;
 }

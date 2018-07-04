@@ -31,6 +31,7 @@ bool Person::operator<(int i) const {
     return this->arbitrarynumber<i;
 }
 
-bool operator<(int i, Person const& p){
+//bool Person::operator<(int i, Person const &p) {}
+bool operator<(int i, Person const& p){//Person:: scoping not necessary
     return i<p.arbitrarynumber; //Now able to access private fields
 }
