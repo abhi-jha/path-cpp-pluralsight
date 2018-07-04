@@ -10,7 +10,7 @@ Person::Person(std::string first, std::string last, int arbitrary) : firstname(f
     std::cout<<"Constructing"<<std::endl;
 }
 
-std::string Person::getName() {
+std::string Person::getName() const {
     return firstname + "  " + lastname;
 }
 
@@ -21,4 +21,16 @@ Person::Person() : arbitrarynumber(0) {
 
 Person::~Person() {
     std::cout<<"Destructing  "<<firstname<<"  "<<lastname<<std::endl;
+}
+
+bool Person::operator<(Person const &p) const {
+    return this->arbitrarynumber<p.arbitrarynumber;
+}
+
+bool Person::operator<(int i) const {
+    return this->arbitrarynumber<i;
+}
+
+bool operator<(int i, Person const& p){
+    return i<p.getNumber();
 }
