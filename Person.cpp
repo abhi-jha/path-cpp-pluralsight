@@ -5,25 +5,18 @@
 #include "Person.h"
 #include <iostream>
 
-Person::Person(std::string first, std::string last, int arbitrary) : firstname(first), lastname(last), arbitrarynumber(arbitrary), pResource(
-        nullptr)
+Person::Person(std::string first, std::string last, int arbitrary) : firstname(first), lastname(last), arbitrarynumber(arbitrary)
 {
     std::cout<<"Constructing "<<firstname<<"  "<<lastname<<std::endl;
 }
 
 std::string Person::getName() const {
-    return firstname + "  " + lastname;
+    return pResource?pResource->getName():"";
 }
 
 Person::Person() : arbitrarynumber(0) {
     std::cout<<"Constructing"<<std::endl;
 
-}
-
-Person::~Person() {
-    //delete this;
-    std::cout<<"Destructing  "<<firstname<<"  "<<lastname<<std::endl;
-    delete pResource;
 }
 
 bool Person::operator<(Person const &p) const {
@@ -40,16 +33,16 @@ bool operator<(int i, Person const& p){//Person:: scoping not necessary
 }
 
 void Person::addResource() {
-    delete pResource;
-    pResource = new Resource("Resource for "+ getName());
+    pResource.reset();
+    pResource = std::make_shared<Resource>("Resource for "+ getName());
 }
 
 Person::Person(Person const &p) {
-    pResource = new Resource(p.pResource->getName());
+    //pResource = new Resource(p.pResource->getName());
 }
 
 Person& Person::operator=(const Person &p) {
-    delete pResource;
-    pResource = new Resource(p.pResource->getName());
+//    delete pResource;
+//    pResource = new Resource(p.pResource->getName());
     return *this;
 }

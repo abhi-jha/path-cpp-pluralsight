@@ -219,6 +219,14 @@ void testResource(){
     Person k = Kate;
 }
 
+void testSharedPointers(){
+    {
+        Person Kate("Abhi", "Jha", 345);
+        Kate.addResource();
+        std::string s1 = Kate.getName();
+        Kate.addResource();
+    }
+}
 int main(int argc, char* argv[]) {
 //    for(int  i = 1 ; i < argc; i++)
 //        std::cout<<argv[i]<<"\t";
@@ -283,6 +291,7 @@ int main(int argc, char* argv[]) {
 //    accum();
 //    referencesAndPointers();
 //    testHeap();
-    testResource();
+    //testResource();
+    testSharedPointers();
     return 0;
 }

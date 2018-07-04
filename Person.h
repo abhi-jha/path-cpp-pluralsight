@@ -7,17 +7,17 @@
 
 #include "Resource.h"
 #include <string>
+#include <memory>
 class Person {
 private:
     std::string firstname;
     std::string lastname;
     int arbitrarynumber;
-    Resource* pResource;
+    std::shared_ptr<Resource> pResource;
     friend bool operator<(int i, Person const& p);
 public:
     //Person()= default;
     Person();
-    ~Person();
     Person(std::string first, std::string last, int arbitrary);
     Person(Person const& p);
     Person&operator=(const Person& p);
