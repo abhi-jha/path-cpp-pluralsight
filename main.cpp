@@ -8,6 +8,7 @@
 #include "Status.h"
 #include "ClassesAndObjects.h"
 #include "Templates.h"
+#include "Accum.h"
 using std::cout;
 using std::cin;
 using std::endl;
@@ -224,5 +225,7 @@ int main(int argc, char* argv[]) {
     cout<<templated_max(s1,s2)<<endl;
 
     cout<<templated_max<double>(33, 2.0)<<endl;
+
+    accum();
     return 0;
 }
