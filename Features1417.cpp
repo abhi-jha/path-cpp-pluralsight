@@ -191,7 +191,7 @@ void lambdas(){
     print_the_vector(names);
 
     //Sort by reverse-length, longer length first using lambda
-    std::sort(std::begin(names), std::end(names), [](std::string const&a, std::string const&b){
+    std::sort(std::begin(names), std::end(names), [](auto const&a, auto const&b){
         return a.length() > b.length();
     });
 
