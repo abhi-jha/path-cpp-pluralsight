@@ -205,10 +205,10 @@ void lambdas(){
 
     //Can't copy unique pointers;
     //p2 = p1;
+    auto pp = std::make_unique<int>(64);
 
-    p2 = std::move(p1);
-    std::sort(std::begin(names), std::end(names), [a1, &b1, value = 64, u{std::move(p2)}](auto const&a, auto const&b){// [] ---> Capture list
-        std::cout<<"\ta1\t:"<<a1<<"\tb1\t"<<b1<<std::endl;
-        return a.length() > b.length();
-    });
+    auto lambda  = [ptr = std::move(pp)](){
+        std::cout<< "Inside the lambda -- value  = "<< *ptr<<"\n";
+    };
+    lambda();
 }
