@@ -4,12 +4,15 @@
 #include <iostream>
 #include <memory>
 #include <chrono>
+#include <vector>
+#include <algorithm>
 #include "Features1417.h"
 constexpr double fibonacci_loop(int n);
 constexpr double fibonacci_recurse(int n);
 void it_is_deprecated()__attribute__ ((deprecated));
 void pointers();
 void libraries();
+void lambdas();
 template<class T>
 T greater_number(T a, T b);
 auto return_type(double side){//This function definition needs be before the use
@@ -92,6 +95,8 @@ void features(){
     pointers();
 
     libraries();
+
+    lambdas();
 }
 
 template<class T>
@@ -157,4 +162,38 @@ void libraries(){
     } else{
         std::cout<<" Out of time! \n";
     }
+}
+
+void print_the_vector(const std::vector<std::string> &vec){
+    for(auto &s : vec){
+        std::cout<<s<<"\t";
+    }
+    std::cout<<std::endl;
+}
+
+bool compare(std::string const& a, std::string const& b){
+    return a.length()<b.length();
+}
+void lambdas(){
+    std::vector<std::string> names{
+        "abhi", "rahul", "amit", "sonya","ram","abhimanyu",
+        "dravid", "tendulkar"
+    };
+
+    print_the_vector(names);
+
+    //sort lexicographically
+    std::sort(std::begin(names), std::end(names));
+    print_the_vector(names);
+
+    //Sort by length
+    std::sort(std::begin(names), std::end(names), compare);
+    print_the_vector(names);
+
+    //Sort by reverse-length, longer length first using lambda
+    std::sort(std::begin(names), std::end(names), [](std::string const&a, std::string const&b){
+        return a.length() > b.length();
+    });
+
+    print_the_vector(names);
 }
