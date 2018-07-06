@@ -2,10 +2,14 @@
 // Created by user on 6/7/18.
 //
 #include <iostream>
+#include <memory>
+#include <chrono>
 #include "Features1417.h"
 constexpr double fibonacci_loop(int n);
 constexpr double fibonacci_recurse(int n);
 void it_is_deprecated()__attribute__ ((deprecated));
+void pointers();
+void libraries();
 template<class T>
 T greater_number(T a, T b);
 auto return_type(double side){//This function definition needs be before the use
@@ -43,6 +47,26 @@ constexpr double maxValue<double> = 2000;
 template <>
 constexpr char maxValue<char> = 'Z';
 
+class X{
+public:
+    X(){
+        std::cout<<" X constructor \n";
+    }
+
+    ~X(){
+        std::cout<<" X destructor \n";
+    }
+
+    void sayHi(){
+        std::cout<<" X says hi! :) \n";
+    }
+
+private:
+
+    int m1{};
+    double m2{3.14};
+};
+
 void features(){
     int a  = 1'000'000;
     double b = 1'2.00001;
@@ -62,6 +86,12 @@ void features(){
     std::cout<<" maxValue<char>     :    "<<maxValue<char><<"\n";
 
     it_is_deprecated();
+
+    std::cout<<std::endl<<std::endl;
+
+    pointers();
+
+    libraries();
 }
 
 template<class T>
@@ -72,4 +102,59 @@ T greater_number(T a, T b){
 //[[deprecated("It is deprecated because it is deprecated")]]
 void it_is_deprecated(){
     std::cout<<"Deprecated method";
+}
+
+void pointers(){
+    //RAW pointers
+
+    int*  p = new int[1000000];
+
+
+    delete [] p;
+    p = nullptr;//to avoid dangling referencing
+    auto p1 = std::make_unique<double[]>(10000);
+
+
+    X* x = new X{};
+    x->sayHi();
+    delete x;
+
+    auto pX = std::make_unique<X>();
+    pX->sayHi();
+}
+
+void print(std::chrono::milliseconds ms){
+    std::cout<<ms.count()<<std::endl;
+}
+
+void libraries(){
+    //Chrono library
+    using namespace std::chrono;
+    using namespace std::string_literals;// To use string's suffix s in a char* literal
+    std::chrono::seconds s{34};
+    std::cout<<s.count()<<" seconds "<<std::endl;
+
+    auto sec = 10s; //seconds suffix
+    std::cout<<s.count()<<" seconds "<<std::endl;
+
+    auto str = "Hello"s; //String not char *
+    std::cout<<str<<" is of type : "<<typeid(s).name()<<std::endl;
+
+    auto x = 2s;
+    std::cout<<" x = 2s :   "; print(x);
+
+    auto y = 150ms;
+    std::cout<<" y = 150ms :  "; print(y);
+
+    auto z = x + y;
+    std::cout<<" z = x + y :   "; print(z);
+
+    constexpr auto timeLimit = 3s;
+
+    std::cout<<"\n Time limit is "; print(timeLimit);
+    if(z < timeLimit){
+        std::cout<<" All right! \n";
+    } else{
+        std::cout<<" Out of time! \n";
+    }
 }
