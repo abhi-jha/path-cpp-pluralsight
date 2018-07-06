@@ -14,6 +14,7 @@ private:
 public:
     Tweeter(std::string first, std::string last, int arbitrary, std::string handle);
     ~Tweeter();
+    std::string getName() const;
 };
 
 

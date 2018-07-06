@@ -14,3 +14,7 @@ Tweeter::Tweeter(std::string first, std::string last, int arbitrary, std::string
 Tweeter::~Tweeter() {
     std::cout<<"Destructing tweeter "<<twitterhandle<<std::endl;
 }
+
+std::string Tweeter::getName() const {
+    std::cout<<Person::getName()<<" "<<twitterhandle<<std::endl;
+}
