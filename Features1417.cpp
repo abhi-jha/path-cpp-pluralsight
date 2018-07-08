@@ -6,9 +6,14 @@
 #include <chrono>
 #include <vector>
 #include <algorithm>
+#include <type_traits>
+#include <map>
 #include "Features1417.h"
+#include "namespaces.h"
 constexpr double fibonacci_loop(int n);
 constexpr double fibonacci_recurse(int n);
+void if_constexpr();
+void multiple_variable_decl();
 void it_is_deprecated()__attribute__ ((deprecated));
 void pointers();
 void libraries();
@@ -97,6 +102,12 @@ void features(){
     libraries();
 
     lambdas();
+
+    namespaces_and_vars_decl();
+
+    if_constexpr();
+
+    multiple_variable_decl();
 }
 
 template<class T>
@@ -117,8 +128,8 @@ void pointers(){
 
     delete [] p;
     p = nullptr;//to avoid dangling referencing
-    auto p1 = std::make_unique<double[]>(10000);
 
+    auto p1 = std::make_unique<double[]>(10000);
 
     X* x = new X{};
     x->sayHi();
@@ -211,4 +222,39 @@ void lambdas(){
         std::cout<< "Inside the lambda -- value  = "<< *ptr<<"\n";
     };
     lambda();
+}
+
+template <typename T>
+auto length(T const& value){
+    if constexpr (std::is_integral<T>::value){//Try removing constexpr
+        return value;
+    }
+    else{
+        return value.length();
+    }
+}
+void if_constexpr(){
+    int n{64};
+    std::string s{"Connie"};
+
+    std::cout<<"  n =  "<<n<<";  length(n) =  "<<length(n)<<"\n";
+    std::cout<<"  s =  "<<s<<";  length(s) =  "<<length(s)<<"\n";
+
+}
+
+void multiple_variable_decl(){
+    //Structured bindings
+    std::map<std::string, std::string> dic{
+            {"casa","home"},
+            {"gatto","cat"},
+            {"tavolo","table"}
+    };
+
+    auto [pos, success] = dic.insert({"sedia","chair"});
+    if(success)
+        std::cout<<" Insertion OK.\n\n";
+
+    for(const auto& [italian, english] : dic){
+        std::cout<<"    "<<italian<<"   :   "<<english<<"\n";
+    }
 }
