@@ -5,7 +5,9 @@
 #ifndef STL_ALGORITHMS_COMPARE_AND_ACCUMULATE_H
 #define STL_ALGORITHMS_COMPARE_AND_ACCUMULATE_H
 
-
+#include <algorithm>
+#include <vector>
+#include <string>
 namespace Compare_And_Accumulate {
     void comapre_and_accumulate();
 };
